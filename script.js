@@ -3,6 +3,9 @@
 // Product data
 if(!JSON.parse(sessionStorage.getItem("cart"))){
 	let cart = [];
+	cart.push({id:1,name:Product 1,price:10});
+	cart.push({id:5,name:Product 5,price:50});
+	
 	sessionStorage.setItem("cart",JSON.stringify(cart));
 }
 const products = [
@@ -28,6 +31,8 @@ function renderProducts() {
 // Render cart list
 function renderCart() {
 	let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+	cart.push({id:1,name:Product 1,price:10});
+	cart.push({id:5,name:Product 5,price:50});
 	let cartList= document.getElementById("cart-list");
 	cart.forEach((product,index)=>{
 		let li = document.createElement("li");
@@ -47,6 +52,7 @@ function addToCart(productId) {
 	document.getElementById("cart-list").innerHTML = "";
 	let product = products[productId-1];
 	let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+	
 	cart.push(product);
 	sessionStorage.setItem("cart",JSON.stringify(cart));
 	renderCart()
